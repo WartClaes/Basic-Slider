@@ -3,19 +3,66 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>jQuery Validate script</title>
+        <title>jQuery Slider</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            #slider-wrapper {
+                overflow: hidden;
+            }
+
+            .clearfix { *zoom: 1; }
+            .clearfix:before,
+            .clearfix:after { content: " "; display: table; }
+            .clearfix:after { clear: both; }
+
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                position: relative;
+            }
+
+            li {
+                width: 100%;
+                height: 500px;
+                text-align: center;
+                line-height: 500px;
+                background: hotpink;
+                float: left;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
-                
+            <div id="slider-wrapper">
+                <ul id="slider" class="clearfix">
+                    <li style="background-image:url('https://unsplash.imgix.net/photo-1415356838286-df6fd593e8b3?q=75&fm=jpg&s=12266b84058b7e5acc8f8b83c432d7b8'); background-size:cover; background-position:center center;">
+                        one
+                    </li>
+                    <li style="background-image:url('https://ununsplash.imgix.net/uploads/141362941583982a7e0fc/abcfbca1?q=75&fm=jpg&s=5266baf09e0e878b72b2e34adf2f54a0'); background-size:cover; background-position:center center;">
+                        two
+                    </li>
+                    <li style="background-image:url('https://ununsplash.imgix.net/uploads/1412825195419af52b492/8bc72ed7?q=75&fm=jpg&s=4f35827a6dc766d393fc51fce493d85d'); background-size:cover; background-position:center center;">
+                        three
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="jquery-1.10.1.min.js"></script>
 
         <script src="src/slider.js"></script>
 
         <script>
-            
+            $('#slider').slide({
+                debug: true,
+                endless: true
+            });
         </script>
     </body>
 </html>
