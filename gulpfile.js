@@ -7,6 +7,9 @@ var gulp = require('gulp'),
         port: 9000,
         scripts: function () {
             return this.app + '/src/*.js';
+        },
+        styles: function () {
+            return this.app + '/src/*.css';
         }
     };
 
@@ -28,8 +31,15 @@ gulp.task('uglify', function () {
         .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('copy', function () {
+gulp.task('copy:scripts', function () {
     var dir = config.scripts();
+
+    return gulp.src(dir)
+        .pipe(gulp.dest(config.dist));
+});
+
+gulp.task('copy:css', function () {
+    var dir = config.styles();
 
     return gulp.src(dir)
         .pipe(gulp.dest(config.dist));
@@ -55,5 +65,5 @@ gulp.task('default', function() {
 });
 
 gulp.task('build', ['clean'], function(){
-    gulp.start('uglify', 'copy', 'minify-end');
+    gulp.start('uglify', 'copy:css', 'copy:scripts', 'minify-end');
 });
